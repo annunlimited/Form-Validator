@@ -1,0 +1,16 @@
+header{
+    text-align: center;
+    color:bisque;
+    background-color: black;
+    padding: 0.7em;
+}
+body{
+    background-color:bisque;;
+}
+
+form{
+    background: scroll;
+    background-color: bisque;
+    /* text-align: center; */
+
+}

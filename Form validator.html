@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <header><h1>Form Validator</h1></header>
+    <link rel="stylesheet" href="cssformvalidator.css">
+    <title>Registration Form</title>
+    <script>
+        function validateform() {
+            var name = document.forms["myform"]["name"].value;
+            var password = document.forms["myform"]["password"].value;
+            var password2 = document.forms["myform"]["password2"].value;
+            var age = document.forms["myform"]["age"].value;
+            var email = document.forms["myform"]["email"].value;
+            var regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+            if (name == null || name === "") {
+                alert("Name can't be blank");
+                return false;
+            } else if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            if (password !== password2) {
+                alert("Passwords must match!");
+                return false;
+            }
+
+            if (isNaN(age) || age === "") {
+                document.getElementById("numloc").innerHTML = "Enter Numeric value only";
+                return false;
+            }
+
+            if (!regex.test(email)) {
+                alert("Enter a valid email address");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form name="myform" method="post" action="http://localhost:8080/FSD2/valid.jsp" onsubmit="return validateform()">
+        <br><br><br>
+        <div class="container">
+        Name:<input type="text" name="name"><br><br><br>
+        Password: <input type="password" name="password"><br><br><br>
+        Re-enter Password: <input type="password" name="password2"><br><br><br>
+        Age: <input type="text" name="age"><span id="numloc"></span><br><br><br>
+        Email: <input type="text" name="email"><br><br><br>
+        <input type="submit" value="Register"><br><br><br>
+    </div> </form>
+</body>
+</html>
